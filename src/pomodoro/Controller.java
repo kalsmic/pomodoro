@@ -1,4 +1,4 @@
-package sample;
+package pomodoro;
 
 public class Controller {
 }
