@@ -7,15 +7,17 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         // load the font
-        Font.loadFont(getClass().getResource("/fonts/VarelaRound-Regular.ttf").toExternalForm(), 10);
+        Font.loadFont( Objects.requireNonNull( getClass().getResource( "/fonts/VarelaRound-Regular.ttf" ) ).toExternalForm(), 10);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load( Objects.requireNonNull( getClass().getResource( "/fxml/home.fxml" ) ) );
+        primaryStage.setScene(new Scene(root, 500, 500));
         primaryStage.setResizable( false );
         primaryStage.show();
     }
