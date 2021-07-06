@@ -13,23 +13,28 @@ public class Attempt
         this.mRemainingSeconds = mKind.getmTotalSeconds();
     }
 
-    public String getmMessage()
+    public String getMessage()
     {
         return mMessage;
     }
 
-    public void setmMessage( String mMessage )
+    public void setMessage( String mMessage )
     {
         this.mMessage = mMessage;
     }
 
-    public int getmRemainingSeconds()
+    public int getRemainingSeconds()
     {
         return mRemainingSeconds;
     }
 
-    public AttemptKind getmKind()
+    public AttemptKind getKind()
     {
         return mKind;
+    }
+
+    public void tick()
+    {
+        mRemainingSeconds--;
     }
 }

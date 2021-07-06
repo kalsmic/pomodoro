@@ -1,11 +1,14 @@
 package pomodoro.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import pomodoro.model.Attempt;
 import pomodoro.model.AttemptKind;
 
@@ -19,6 +22,7 @@ public class Home
 
     private Attempt mCurrentAttempt;
     private StringProperty mTimerText;
+    private Timeline mTimeline;
 
     public Home()
     {
@@ -51,10 +55,23 @@ public class Home
         mCurrentAttempt = new Attempt( kind, "" );
         addAttemptStyle( kind );
         title.setText( kind.getDisplayName() );
-        setTimerText( mCurrentAttempt.getmRemainingSeconds() );
+        setTimerText( mCurrentAttempt.getRemainingSeconds() );
+        mTimeline = new Timeline();
+        mTimeline.setCycleCount( kind.getmTotalSeconds() );
+        mTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds( 1 ), e -> {
+            mCurrentAttempt.tick();
+            setTimerText( mCurrentAttempt.getRemainingSeconds() );
+        }) );
 
     }
 
+    public void playTimer() {
+        mTimeline.play();
+    }
+
+    public void pauseTimer(){
+        mTimeline.pause();
+    }
     private void addAttemptStyle( AttemptKind kind )
     {
         clearAttemptStyles();
@@ -68,4 +85,11 @@ public class Home
             container.getStyleClass().remove( kind.toString().toLowerCase() );
         }
     }
+
+    public void handleRestart( ActionEvent actionEvent )
+    {
+        prepareAttempt( AttemptKind.FOCUS );
+        playTimer();
+    }
+
 }
