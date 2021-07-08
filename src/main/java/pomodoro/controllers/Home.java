@@ -1,5 +1,6 @@
-package pomodoro.controllers;
+package main.java.pomodoro.controllers;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
@@ -7,10 +8,11 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import pomodoro.model.Attempt;
-import pomodoro.model.AttemptKind;
+import main.java.pomodoro.model.Attempt;
+import main.java.pomodoro.model.AttemptKind;
 
 public class Home
 {
@@ -19,6 +21,9 @@ public class Home
 
     @FXML
     private Label title;
+
+    @FXML
+    private TextArea message;
 
     private Attempt mCurrentAttempt;
     private StringProperty mTimerText;
@@ -52,26 +57,57 @@ public class Home
     }
     private void prepareAttempt( AttemptKind kind )
     {
+        reset();
         mCurrentAttempt = new Attempt( kind, "" );
         addAttemptStyle( kind );
         title.setText( kind.getDisplayName() );
         setTimerText( mCurrentAttempt.getRemainingSeconds() );
+
         mTimeline = new Timeline();
         mTimeline.setCycleCount( kind.getmTotalSeconds() );
-        mTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds( 1 ), e -> {
+        mTimeline.getKeyFrames().add( new KeyFrame( Duration.seconds( 1 ), e -> {
             mCurrentAttempt.tick();
             setTimerText( mCurrentAttempt.getRemainingSeconds() );
-        }) );
+        } ) );
+
+        mTimeline.setOnFinished( e -> {
+            saveCurrentAttempt();
+            prepareAttempt(
+                    mCurrentAttempt.getKind() == AttemptKind.FOCUS ?
+                            AttemptKind.BREAK : AttemptKind.FOCUS );
+        } );
 
     }
 
-    public void playTimer() {
+    private void saveCurrentAttempt()
+    {
+        mCurrentAttempt.setMessage( message.getText() );
+        mCurrentAttempt.save();
+    }
+
+    /**
+     * This method clears any running timelines if any to avoid running multiple timelines.
+     */
+    private void reset()
+    {
+        clearAttemptStyles();
+
+        if ( mTimeline != null && mTimeline.getStatus() == Animation.Status.RUNNING )
+        {
+            mTimeline.stop();
+        }
+    }
+
+    public void playTimer()
+    {
         mTimeline.play();
     }
 
-    public void pauseTimer(){
+    public void pauseTimer()
+    {
         mTimeline.pause();
     }
+
     private void addAttemptStyle( AttemptKind kind )
     {
         clearAttemptStyles();

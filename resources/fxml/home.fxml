@@ -8,7 +8,7 @@
 <VBox stylesheets="/css/main.css"
       xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="pomodoro.controllers.Home"
+      fx:controller="main.java.pomodoro.controllers.Home"
       fx:id="container">
     <children>
         <Label fx:id="title" text="Pomodoro"/>

@@ -1,4 +1,4 @@
-package pomodoro.model;
+package main.java.pomodoro.model;
 
 public class Attempt
 {
@@ -36,5 +36,16 @@ public class Attempt
     public void tick()
     {
         mRemainingSeconds--;
+    }
+
+    public void save()
+    {
+        System.out.printf("Saving: %s %n", this);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Attempt{" + "mMessage='" + mMessage + '\'' + ", mRemainingSeconds=" + mRemainingSeconds + ", mKind=" + mKind + '}';
     }
 }

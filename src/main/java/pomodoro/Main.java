@@ -1,4 +1,4 @@
-package pomodoro;
+package main.java.pomodoro;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
