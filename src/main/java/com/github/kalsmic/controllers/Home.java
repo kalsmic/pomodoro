@@ -1,4 +1,4 @@
-package main.java.pomodoro.controllers;
+package com.github.kalsmic.controllers;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -11,8 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import main.java.pomodoro.model.Attempt;
-import main.java.pomodoro.model.AttemptKind;
+import com.github.kalsmic.model.Attempt;
+import com.github.kalsmic.model.AttemptKind;
 
 public class Home
 {

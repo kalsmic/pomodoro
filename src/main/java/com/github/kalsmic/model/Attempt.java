@@ -1,4 +1,4 @@
-package main.java.pomodoro.model;
+package com.github.kalsmic.model;
 
 public class Attempt
 {
@@ -6,7 +6,7 @@ public class Attempt
     private int mRemainingSeconds;
     private AttemptKind mKind;
 
-    public Attempt(  AttemptKind mKind, String mMessage )
+    public Attempt( AttemptKind mKind, String mMessage )
     {
         this.mMessage = mMessage;
         this.mKind = mKind;

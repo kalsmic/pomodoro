@@ -1,4 +1,4 @@
-package main.java.pomodoro;
+package com.github.kalsmic;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,8 @@ public class Main extends Application {
         // load the font
         Font.loadFont( Objects.requireNonNull( getClass().getResource( "/fonts/VarelaRound-Regular.ttf" ) ).toExternalForm(), 10);
 
-        Parent root = FXMLLoader.load( Objects.requireNonNull( getClass().getResource( "/fxml/home.fxml" ) ) );
+        Parent root = FXMLLoader.load( Objects.requireNonNull( getClass().getResource(
+                "/com.github.kalsmic/fxml/home.fxml" ) ) );
         primaryStage.setScene(new Scene(root, 500, 500));
         primaryStage.setResizable( false );
         primaryStage.show();

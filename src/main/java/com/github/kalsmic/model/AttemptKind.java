@@ -1,4 +1,4 @@
-package main.java.pomodoro.model;
+package com.github.kalsmic.model;
 
 public enum AttemptKind
 {
