@@ -10,9 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import com.github.kalsmic.model.Attempt;
 import com.github.kalsmic.model.AttemptKind;
+
+import java.io.File;
 
 public class Home
 {
@@ -72,6 +76,7 @@ public class Home
 
         mTimeline.setOnFinished( e -> {
             saveCurrentAttempt();
+            playSound();
             prepareAttempt(
                     mCurrentAttempt.getKind() == AttemptKind.FOCUS ?
                             AttemptKind.BREAK : AttemptKind.FOCUS );
@@ -83,6 +88,14 @@ public class Home
     {
         mCurrentAttempt.setMessage( message.getText() );
         mCurrentAttempt.save();
+    }
+
+    private void playSound(){
+        Media sound = new Media(getClass().getResource(
+                "/media/"+mCurrentAttempt.getKind().toString().toLowerCase()+".mp3"
+        ).toExternalForm());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 
     /**

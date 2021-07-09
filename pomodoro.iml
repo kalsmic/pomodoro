@@ -21,5 +21,7 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:linux:11" level="project" />
   </component>
 </module>

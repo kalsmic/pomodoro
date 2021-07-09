@@ -2,7 +2,7 @@ package com.github.kalsmic.model;
 
 public enum AttemptKind
 {
-    FOCUS(3, "Focus time"),
+    FOCUS(3*60, "Focus time"),
     BREAK(3*60, "Break time");
 
     private int mTotalSeconds;

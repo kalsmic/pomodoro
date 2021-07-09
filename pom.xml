@@ -19,7 +19,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>11</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>11</version>
+        </dependency></dependencies>
     <build>
         <plugins>
             <plugin>
