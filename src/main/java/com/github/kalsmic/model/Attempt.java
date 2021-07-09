@@ -10,7 +10,7 @@ public class Attempt
     {
         this.mMessage = mMessage;
         this.mKind = mKind;
-        this.mRemainingSeconds = mKind.getmTotalSeconds();
+        this.mRemainingSeconds = mKind.getTotalSeconds();
     }
 
     public String getMessage()

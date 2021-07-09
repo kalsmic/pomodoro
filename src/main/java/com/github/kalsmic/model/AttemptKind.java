@@ -2,8 +2,8 @@ package com.github.kalsmic.model;
 
 public enum AttemptKind
 {
-    FOCUS(3*60, "Focus time"),
-    BREAK(3*60, "Break time");
+    FOCUS(25*60, "Focus time"),
+    BREAK(25*60, "Break time");
 
     private int mTotalSeconds;
     private String mDisplayName;
@@ -14,7 +14,7 @@ public enum AttemptKind
         this.mDisplayName = mdisplayName;
     }
 
-    public int getmTotalSeconds(){
+    public int getTotalSeconds(){
         return mTotalSeconds;
     }
 

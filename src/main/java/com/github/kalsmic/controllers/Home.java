@@ -16,8 +16,6 @@ import javafx.util.Duration;
 import com.github.kalsmic.model.Attempt;
 import com.github.kalsmic.model.AttemptKind;
 
-import java.io.File;
-
 public class Home
 {
     @FXML
@@ -68,7 +66,7 @@ public class Home
         setTimerText( mCurrentAttempt.getRemainingSeconds() );
 
         mTimeline = new Timeline();
-        mTimeline.setCycleCount( kind.getmTotalSeconds() );
+        mTimeline.setCycleCount( kind.getTotalSeconds() );
         mTimeline.getKeyFrames().add( new KeyFrame( Duration.seconds( 1 ), e -> {
             mCurrentAttempt.tick();
             setTimerText( mCurrentAttempt.getRemainingSeconds() );
@@ -113,11 +111,13 @@ public class Home
 
     public void playTimer()
     {
+        container.getStyleClass().add( "playing" );
         mTimeline.play();
     }
 
     public void pauseTimer()
     {
+        container.getStyleClass().remove( "playing" );
         mTimeline.pause();
     }
 
@@ -129,6 +129,7 @@ public class Home
 
     private void clearAttemptStyles()
     {
+        container.getStyleClass().remove( "playing" );
         for ( AttemptKind kind : AttemptKind.values() )
         {
             container.getStyleClass().remove( kind.toString().toLowerCase() );
@@ -141,4 +142,21 @@ public class Home
         playTimer();
     }
 
+    public void handlePlay( ActionEvent actionEvent )
+    {
+        // check is there is no  timer running
+        if(mCurrentAttempt == null){
+            // start one if not yet started
+            handleRestart( actionEvent );
+        } else {
+            // resume the already started timer that was paused
+            playTimer();
+
+        }
+    }
+
+    public void handlePause( ActionEvent actionEvent )
+    {
+        pauseTimer();
+    }
 }
