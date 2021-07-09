@@ -20,6 +20,7 @@ public class Main extends Application {
                 "/com.github.kalsmic/fxml/home.fxml" ) ) );
         primaryStage.setScene(new Scene(root, 500, 500));
         primaryStage.setResizable( false );
+        primaryStage.setTitle( "Pomodoro Timer" );
         primaryStage.show();
     }
 
