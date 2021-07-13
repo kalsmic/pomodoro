@@ -59,7 +59,7 @@
 
         <ImageView>
             <image>
-                <Image url="/images/pomodoro.png"/>
+                <Image url="@/images/pomodoro.png"/>
             </image>
         </ImageView>
 
