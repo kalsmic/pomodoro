@@ -4,3 +4,6 @@ Created to practice JavaFx skills while taking a [JavaFx course](https://teamtre
 
 ## How to run the project.
 - run `mvn clean javafx:run` in the terminal
+
+## ScreenShot
+![](/src/main/resources/images/screenshot.png)
