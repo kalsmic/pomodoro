@@ -6,4 +6,4 @@ Created to practice JavaFx skills while taking a [JavaFx course](https://teamtre
 - run `mvn clean javafx:run` in the terminal
 
 ## ScreenShot
-![](/src/main/resources/images/screenshot.png)
+![app screenshot](/src/main/resources/images/screenshot.png)
